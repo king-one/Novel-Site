@@ -1,8 +1,8 @@
 <template>
     <section class="book-classify">
      <div class="book-hot">
-        <h2 class="classify-title">热门小说</h2>
-        <Bo
+        <h2 class="classify-title">{{title}}</h2>
+        <book-list :bookList="bookList"></book-list>
      </div>
    </section>
 </template>
@@ -12,16 +12,14 @@
 }
 </style>
 <script type="text/ecmascript-6">
-import BookList from "./Common/BookList.vue";
-import Loading from "./Loading/Loading.vue";
+import BookList from "./BookList"
 export default {
   data() {
     return {};
   },
-  props: ["datalist", "title"],
+  props: ["bookList", "title"],
   components: {
-    BookList,
-    Loading
+    BookList
   }
 };
 </script>

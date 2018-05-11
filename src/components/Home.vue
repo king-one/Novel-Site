@@ -4,19 +4,12 @@
    <div class="header-top">易看小说</div>
    <nav>
        <ul class="book-menu">
-        	<li><a href="/yc"  class="active">玄幻</a></li>
-          <li><a href="/ycmm">修真</a></li>
-          <li><a href="/book" >都市</a></li>
-          <li><a href="/category" >历史</a></li>
-          <li><a href="/free" >游戏</a></li>
-          <li><a href="/taste" >分类</a></li>
-          <li><a href="/taste" >男生</a></li>
-          <li><a href="/taste" >女生</a></li>
-          <li><a href="/taste" >口味</a></li>
-          <li><a href="/rank">排行</a></li>
+        	<li v-for="(item,index) in navList" :key="index"><a href="item.link"  :class="index === 0 ? 'active' :null">{{item.tittle}}</a></li>
         </ul>
    </nav>
    </header>
+   <classfiy-panel :bookList="bookList" title="热门小说"></classfiy-panel>
+   <loading v-if="!bookList"></loading>
   </div>
 </template>
 <style lang="less">
@@ -78,63 +71,72 @@ header {
 }
 </style>
 <script type="text/ecmascript-6">
-import {bookList} from "../mock"
+import Loading from "./Loading";
+import ClassfiyPanel from "./ClassfiyPanel";
+import bookList from "../mock";
 export default {
   data() {
     return {
-      bookList: [
+      navList: [
         {
-          id:"12345",
-          title: "荒野直播之独闯天涯",
-          author: "逆流的沙"
+          tittle: "玄幻",
+          linkL: "/"
         },
         {
-          id:"12345",
-          title: "荒野直播之独闯天涯",
-          author: "逆流的沙"
+          tittle: "修真",
+          linkL: "/"
         },
         {
-          id:"12345",
-          title: "荒野直播之独闯天涯",
-          author: "逆流的沙"
+          tittle: "都市",
+          linkL: "/"
         },
         {
-          id:"12345",
-          title: "荒野直播之独闯天涯",
-          author: "逆流的沙"
+          tittle: "历史",
+          linkL: "/"
         },
         {
-          id:"12345",
-          title: "荒野直播之独闯天涯",
-          author: "逆流的沙"
+          tittle: "游戏",
+          linkL: "/"
         },
         {
-          id:"12345",
-          title: "荒野直播之独闯天涯",
-          author: "逆流的沙"
+          tittle: "分类",
+          linkL: "/"
         },
         {
-          id:"12345",
-          title: "荒野直播之独闯天涯",
-          author: "逆流的沙"
+          tittle: "男生",
+          linkL: "/"
         },
         {
-          id:"12345",
-          title: "荒野直播之独闯天涯",
-          author: "逆流的沙"
+          tittle: "女生",
+          linkL: "/"
         },
         {
-          id:"12345",
-          title: "荒野直播之独闯天涯",
-          author: "逆流的沙"
+          tittle: "口味",
+          linkL: "/"
         },
         {
-          id:"12345",
-          title: "荒野直播之独闯天涯",
-          author: "逆流的沙"
+          tittle: "排行",
+          linkL: "/"
         }
-      ]
+      ],
+      bookList: null
     };
+  },
+  components: {
+    Loading,
+    ClassfiyPanel
+  },
+  methods: {
+    getBookList() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(bookList.data);
+        }, 200);
+      });
+    }
+  },
+  created() {
+    this.getBookList().then(res => this.bookList = res);
   }
 };
 </script>
