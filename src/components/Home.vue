@@ -9,6 +9,9 @@
    </nav>
    </header>
    <classfiy-panel :bookList="bookList" title="热门小说"></classfiy-panel>
+   <classfiy-panel :bookList="bookList" title="排行榜"></classfiy-panel>
+   <classfiy-panel :bookList="bookList" title="新书抢先"></classfiy-panel>
+   <classfiy-panel :bookList="bookList" title="畅销完本"></classfiy-panel>
    <loading v-if="!bookList"></loading>
   </div>
 </template>
@@ -50,7 +53,7 @@ header {
   }
 }
 .book-classify {
-  padding: 0.3174rem;
+  padding: 0.2133rem 0.3174rem ;
   .classify-title {
     height: 0.8rem;
     line-height: 0.8rem;
@@ -131,12 +134,12 @@ export default {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve(bookList.data);
-        }, 200);
+        }, 300);
       });
     }
   },
   created() {
-    this.getBookList().then(res => this.bookList = res);
+    this.getBookList().then(res => (this.bookList = res));
   }
 };
 </script>
