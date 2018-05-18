@@ -11,7 +11,7 @@
    <classfiy-panel :bookList="bookList" title="热门小说"></classfiy-panel>
    <classfiy-panel :bookList="bookList" title="排行榜"></classfiy-panel>
    <classfiy-panel :bookList="bookList" title="新书抢先"></classfiy-panel>
-   <classfiy-panel :bookList="bookList" title="畅销完本"></classfiy-panel>
+   <classfiy-panel :bookList="bookList" title="畅销完本" :desc="true"></classfiy-panel>
    <loading v-if="!bookList"></loading>
   </div>
 </template>

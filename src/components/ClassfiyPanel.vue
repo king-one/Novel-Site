@@ -2,7 +2,7 @@
     <section class="book-classify">
      <div class="book-hot">
         <h2 class="classify-title">{{title}}</h2>
-        <book-list :bookList="bookList"></book-list>
+        <book-list :bookList="bookList" :desc="desc"></book-list>
      </div>
    </section>
 </template>
@@ -17,7 +17,7 @@ export default {
   data() {
     return {};
   },
-  props: ["bookList", "title"],
+  props: ["bookList", "title","desc"],
   components: {
     BookList
   }
