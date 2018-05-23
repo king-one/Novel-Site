@@ -140,7 +140,6 @@ export default {
   },
   created() {
     this.getBookList().then(res => {
-      console.log(res)
       this.bookList = res
     });
   }
